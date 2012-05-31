@@ -1,0 +1,10 @@
+{
+  "name": "weinre-indigo",
+  "version": "0.0.1",
+  "dependencies": {
+    "weinre": "~> 2.0.0"
+  },
+  "engines": {
+    "node": "0.6.18"
+  }
+}
