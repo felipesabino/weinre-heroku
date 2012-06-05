@@ -1,1 +1,1 @@
-web: node_modules/weinre/weinre --httpPort $PORT --boundHost weinre-indigo.herokuapp.com
+web: node node_modules/weinre/weinre --httpPort $PORT --boundHost 0.0.0.0
