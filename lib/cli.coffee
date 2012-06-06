@@ -27,7 +27,7 @@ utils  = require './utils'
 weinre = require './weinre'
 
 optionDefaults = 
-    httpPort:     8080
+    httpPort:     process.env.PORT || 8080
     boundHost:    '-all-'
     verbose:      true
     debug:        false
