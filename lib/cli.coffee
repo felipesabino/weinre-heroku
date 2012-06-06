@@ -28,8 +28,8 @@ weinre = require './weinre'
 
 optionDefaults = 
     httpPort:     8080
-    boundHost:    'localhost'
-    verbose:      false
+    boundHost:    '-all-'
+    verbose:      true
     debug:        false
     readTimeout:  5
 

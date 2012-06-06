@@ -76,8 +76,8 @@ utils.registerClass class ChannelManager
 
         return null if !channel
         
-        if remoteAddress
-            return null if channel.remoteAddress != remoteAddress
+        # if remoteAddress
+        #     return null if channel.remoteAddress != remoteAddress
         
         channel
 
