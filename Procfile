@@ -1,1 +1,1 @@
-web:  node_modules/.bin/weinre  --httpPort $PORT --boundHost -all-
+web: node_modules/.bin/weinre --verbose --httpPort $PORT --boundHost -all-
