@@ -19,17 +19,22 @@ module.exports = InspectorBackendImpl = (function() {
     var intf, intfName, intfNames, method, proxy, proxyMethod, _i, _len, _results;
     intfNames = ["ApplicationCache", "BrowserDebugger", "CSS", "Console", "DOM", "DOMStorage", "Database", "Debugger", "InjectedScript", "Inspector", "Network", "Profiler", "Runtime"];
     _results = [];
+    if(!window.___intf)
+      window.___intf = {};
+    
+    var intfHolder = window.___intf;
+
     for (_i = 0, _len = intfNames.length; _i < _len; _i++) {
       intfName = intfNames[_i];
       proxy = Weinre.messageDispatcher.createProxy(intfName);
-      if (window[intfName]) {
+      if (intfHolder[intfName]) {
         throw new Ex(arguments, "backend interface '" + intfName + "' already created");
       }
       intf = IDLTools.getIDL(intfName);
       if (!intf) {
         throw new Ex(arguments, "interface not registered: '" + intfName + "'");
       }
-      window[intfName] = {};
+      intfHolder[intfName] = {};
       _results.push((function() {
         var _j, _len2, _ref, _results2;
         _ref = intf.methods;
@@ -38,7 +43,7 @@ module.exports = InspectorBackendImpl = (function() {
           method = _ref[_j];
           proxyMethod = InspectorBackendImpl.getProxyMethod(proxy, method);
           InspectorBackendImpl.prototype[method.name] = proxyMethod;
-          _results2.push(window[intfName][method.name] = proxyMethod);
+          _results2.push(intfHolder[intfName][method.name] = proxyMethod);
         }
         return _results2;
       })());
